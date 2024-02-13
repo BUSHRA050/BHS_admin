@@ -8,7 +8,6 @@ import {
  getAllUsers,
  updateDriverStatus
 } from "../../../services/users";
-import DeleteHelper from "../../../components/alert/deleteHelper";
 import Loader from "../../../components/loader";
 import SnackbarAlert from "../../../components/snackbar/SnackbarAlert";
 import { getAllOrginization } from "../../../services/organization";

@@ -4,7 +4,6 @@ import DynamicTable from "../../../components/dynamicTable";
 import NavigationDrawer from "../../../components/navigationDrawer";
 import merchantStyle from "./style";
 import { getAllOrginization } from "../../../services/organization/index";
-import DeleteHelper from "../../../components/alert/deleteHelper";
 import Loader from "../../../components/loader";
 import SnackbarAlert from "../../../components/snackbar/SnackbarAlert";
 import {updateOrginizationStatus} from "../../../services/organization/index"
