@@ -6,7 +6,6 @@ import { SuperAdminRoutes } from "./routes/allRoutes";
 import AppProvider from "./context";
 import ForgotPassword from "./containers/auth/forgotPassword";
 import { AuthRoutes } from "./routes/authRoutes";
-import firebase from "firebase";
 import OrginizationDetail from "./containers/app/orginization/orginizationDetail";
 
 function App() {
