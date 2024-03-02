@@ -83,9 +83,6 @@ const Orginization = () => {
     message: "",
   });
 
-  const [inputValue, setInputValue] = useState({
-    name: "",
-  });
   
   const handleSnackbarVal = (open, type, message) => {
     setSnackbarProps({
@@ -103,87 +100,19 @@ const Orginization = () => {
         // let data = res.data.data.reverse();
         setIsLoading(false);
         setRowsData(res?.data?.data);
-        console.log(res?.data?.data?.merchantImage,"iiiuuiiuiiiuu");
       })
       .catch((err) => {
-        console.log(err, "errr");
         setIsLoading(false);
       });
   };
 
-  console.log(rowsData,"rowsDatarowsDatarowsData");
 
   useEffect(() => {
     handlegetAllMerchants();
   }, []);
 
-  const openAddDialog = () => {
-    setOpenDialog(true);
-    setType("add");
-  };
+  
 
-  const openEditDialog = (row) => {
-    setOpenDialog(true);
-    setDialgData(row);
-    setType("edit");
-  };
-
-
-  // const handleEditStatus = (e, row, type) => {
-  //   e.stopPropagation();
-  //   setIsLoading(true);
-  //   let featureParam = {
-  //     isFeatured: !row.isFeatured,
-  //     restId: row._id,
-  //   };
-  //   let approveParam = {
-  //     isApprove: !row.isApprove,
-  //     restId: row._id,
-  //   };
-
-  //   if (type == "feature")
-  //     updateRestStatus(featureParam)
-  //       .then((res) => {
-  //         getData();
-  //         handleSnackbarVal(true, "success", res?.data?.message);
-  //         setIsLoading(false);
-  //       })
-  //       .catch((err) => {
-  //         setIsLoading(false);
-  //         handleSnackbarVal(true, "error", err?.response?.data?.message);
-  //       });
-  //   else
-  //     updateRestStatus(approveParam)
-  //       .then((res) => {
-  //         handleSnackbarVal(true, "success", res?.data?.message);
-  //         setIsLoading(false);
-  //         getData();
-  //       })
-  //       .catch((err) => {
-  //         setIsLoading(false);
-  //         handleSnackbarVal(true, "error", err?.response?.data?.message);
-  //       });
-  // };
-
-  // const handleClose = () => {
-  //   setOpenDialog(false);
-  //   setInputValue({
-  //     name: "",
-  //     email: "",
-  //     phoneNumber: "",
-  //     address: "",
-  //   });
-  //   setImage("");
-  //   setCategory("");
-  // };
-
-  // const handleDelete = (val) => {};
-
-  // const navigateToDetail = (row) => {
-  //   navigate(`/restaurantDetail/${row.orderId}`, {
-  //     state: row,
-  //   });
-  // };
 
   const handleUpdateMerchantStatus = (e,row, type) => {
     let payload = {
@@ -232,19 +161,6 @@ const Orginization = () => {
             </Typography>
           </Grid>
         </Grid>
-        {/* <div style={{ textAlign: "right", margin: "10px 0" }}>
-          <TextField placeholder="Search" size="small" />
-          <Button
-            variant="contained"
-            size="small"
-            disableRipple
-            className={classes.loginBtn}
-            onClick={openAddDialog}
-          >
-            <Typography className={classes.loginBtnText}>Add New</Typography>
-          </Button>
-        </div> */}
-
         {/* >> Table */}
         <DynamicTable
           headerData={headerData}
@@ -253,12 +169,7 @@ const Orginization = () => {
           handleEditStatus={handleUpdateMerchantStatus}
           showView={true}
           navigateToDetail={navigateToDetail}
-          // showDelete={true}
-          // showEdit={true}
-          // handleDelete={handleDelete}
-          // openEditDialog={openEditDialog}
           showSwitch={true}
-          // type={type}
         />
       </Container>
     </NavigationDrawer>

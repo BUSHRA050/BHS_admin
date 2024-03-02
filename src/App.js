@@ -4,7 +4,6 @@ import Login from "./containers/auth/login";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { SuperAdminRoutes } from "./routes/allRoutes";
 import AppProvider from "./context";
-import ForgotPassword from "./containers/auth/forgotPassword";
 import { AuthRoutes } from "./routes/authRoutes";
 import OrginizationDetail from "./containers/app/orginization/orginizationDetail";
 
@@ -39,7 +38,6 @@ function App() {
       <AppProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/" element={<AuthRoutes />}>
             {isAuthenticated?.email === "bhsjobportal@gmail.com" ? (
               SuperAdminRoutes.map(

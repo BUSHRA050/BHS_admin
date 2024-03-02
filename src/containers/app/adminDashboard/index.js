@@ -94,30 +94,31 @@ const AdminDashboard = () => {
     getData();
   }, []);
 
-  const getData = () => {
-    adminDashboard()
-      .then((response) => {
-        setDashboardData(response.data.data);
-        handleCandidateChart(response.data.data);
-        handleOrgChart(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error, "asdlskdjslkjdlk");
-      });
+  const getData = async() => {
+    try {
+      const dashboradData = await adminDashboard();
+    if (dashboradData?.status==200) {
+      setDashboardData(dashboradData.data.data);
+      handleCandidateChart(dashboradData.data.data);
+      handleOrgChart(dashboradData.data.data);
+    }else{
+      console.log("erroror");
+    }
+    } catch (error) {
+      console.log(error,"fkjffkjkfj");
+    }
   };
 
   const handleCandidateChart = (data) => {
     let tempArr = [];
     data?.candidateChartData?.map((val) => {
-      //  console.log(val, "VALLLL");
-      //  console.log(Temp[val._id.charAt(1) - 1], "LLLLL");
       tempArr.push({
         month: Temp[val._id.charAt(1) - 1],
         totalnumbers: val.numberofOrganization,
         id: val._id.charAt(1),
       });
     });
-    const sortedProducts = tempArr.sort((res1, res2) => res1.id - res2.id);
+    const sortedProducts = tempArr.sort((res1, res2) => res1?.id - res2?.id);
     setChartData(sortedProducts);
   };
 
@@ -135,8 +136,7 @@ const AdminDashboard = () => {
     const sorted = tempArrOrg.sort((res1, res2) => res1.id - res2.id);
     setOrgChartData(sorted);
   };
-  console.log(orgChartData, "djkjdkjjdjdjdjjdjdjdjdjdj");
-  console.log(chartData, "jdkjdjjdkjdkjkjdjdkkdj");
+  
   return (
     <NavigationDrawer>
       <Loader isloading={isLoading} />

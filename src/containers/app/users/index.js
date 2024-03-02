@@ -163,25 +163,6 @@ const Merchants = () => {
   //   });
   // };
 
-  const handleUpdateMerchantStatus = (e,row, type) => {
-    let payload = {
-      isApprove: !row.isApprove,
-      driverId: row._id,
-    };
-      setIsLoading(true);
-      updateDriverStatus(payload)
-        .then((res) => {
-          handlegetAllMerchants();
-          setIsLoading(false);
-          handleSnackbarVal(true, "success", res?.data?.message);
-        })
-        .catch((err) => {
-          setIsLoading(false);
-          handleSnackbarVal(true, "error", err?.response?.data?.message);
-        });
-  };
-
-
 
 
   const handleCloseSnackbar = () => {
@@ -223,13 +204,6 @@ const Merchants = () => {
           headerData={headerData}
           bodyRows={rowsData}
           displayData={diplayRows}
-          handleEditStatus={handleUpdateMerchantStatus}
-          // showDelete={true}
-          // showEdit={true}
-          // handleDelete={handleDelete}
-          // openEditDialog={openEditDialog}
-          showSwitch={true}
-          // type={type}
         />
       </Container>
     </NavigationDrawer>

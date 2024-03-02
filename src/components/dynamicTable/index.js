@@ -19,7 +19,6 @@ import { Delete, Edit, RemoveRedEye } from "@mui/icons-material";
 import { primaryColor } from "../../constants/colors";
 import { useNavigate } from "react-router-dom";
 import ImageResolver from "./ImageResolver";
-import RestImageResolver from "./restImageResolver";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -66,7 +65,7 @@ function EnhancedTableHead(props) {
             align="left"
             // align={headCell.numeric ? "right" : "left"}
             padding="normal"
-            sortDirection={orderBy === headCell.id ? order : false}
+            sortDirection={false}
           >
             {headCell.label !== "Actions" ? (
               <TableSortLabel
@@ -135,6 +134,7 @@ export default function DynamicTable({
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
+    console.log(isAsc,"Assmkjdkkfkjkfkjf");
     setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
@@ -183,9 +183,7 @@ export default function DynamicTable({
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row, index) => {
                 const isItemSelected = isSelected(row.name);
-                const labelId = `enhanced-table-checkbox-${index}`;
-
-                console.log(row, "rowwwwwwwwwwww");
+                
                 return (
                   <TableRow
                     aria-checked={isItemSelected}
