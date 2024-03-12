@@ -255,7 +255,7 @@ const RestaurantDetail = () => {
                   </StyledTypo>
                   <FormControl className={classes.durationSelect} size="small">
                     <Select  value={activePlan} onChange={(e)=>setActivePlan(e.target.value)}>
-                    <MenuItem value="Free">Free</MenuItem>
+                    {/* <MenuItem value="Free">Free</MenuItem> */}
                       <MenuItem value="Basic">Basic</MenuItem>
                       <MenuItem value="Standard">Standard</MenuItem>
                       <MenuItem value="Premium">Premium</MenuItem>
